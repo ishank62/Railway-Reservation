@@ -1,0 +1,16 @@
+<div class="main">
+  <h1> Welcome to Railway Reservation Page</h1>
+  <h4>Please enter the no. of seats you want to book in the train below.</h4>
+  <input (keyup)="handleChange($event)">
+  <button>Submit</button>
+
+
+  <h1>Seats availability</h1>
+  <div class="seats-container">
+    <ng-container *ngFor="let seat of seats">
+      <div class="seat">
+        <p><strong>{{seat}}</strong></p>
+      </div>
+    </ng-container>
+  </div>
+</div>
