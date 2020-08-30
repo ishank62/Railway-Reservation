@@ -29,10 +29,16 @@ export class ReservationComponent implements OnInit {
 
   handleChange(event) {
     this.numberOfSeats = parseInt(event.target.value);
+    if (!isNaN(this.numberOfSeats) && this.numberOfSeats <= 7)
+      this.validation = true;
+    else this.validation = false;
   }
 
   submitNoOfSeats() {
-    if (this.seats.length - this.filledSeats.length < this.numberOfSeats) {
+    if (
+      this.seats.length - this.filledSeats.length < this.numberOfSeats ||
+      this.numberOfSeats > 7
+    ) {
       this.validation = false;
       return;
     }
@@ -42,7 +48,7 @@ export class ReservationComponent implements OnInit {
     let max = 0;
     for (let i = 0; i < spacesInRow.length; i++) {
       if (max < spacesInRow[i]) max = spacesInRow[i];
-      if (spacesInRow[i] < this.numberOfSeats) {
+      if (spacesInRow[i] >= this.numberOfSeats) {
         max = spacesInRow[i];
         break;
       }
@@ -111,6 +117,10 @@ export class ReservationComponent implements OnInit {
         counter++;
       }
       if ((i + 1) % 7 === 0) {
+        spacesInRow.push(counter);
+        counter = 0;
+      }
+      if (i === this.seats.length - 1) {
         spacesInRow.push(counter);
         counter = 0;
       }
