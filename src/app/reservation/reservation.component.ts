@@ -56,7 +56,7 @@ export class ReservationComponent implements OnInit {
 
     let index = spacesInRow.indexOf(max);
     let counter = 0;
-    for (let i = index * 7; i < index * 7 + 6; i++) {
+    for (let i = index * 7; i < index * 7 + 7; i++) {
       if (this.filledSeats.indexOf(this.seats[i]) < 0) {
         this.selectedSeats.push(this.seats[i]);
         counter++;
@@ -68,7 +68,7 @@ export class ReservationComponent implements OnInit {
     let nextRow = index + 1;
     while (counter <= this.numberOfSeats) {
       if (prevRow >= 0) {
-        for (let i = prevRow * 7; i < prevRow * 7 + 6; i++) {
+        for (let i = prevRow * 7; i < prevRow * 7 + 7; i++) {
           if (this.filledSeats.indexOf(this.seats[i]) < 0) {
             this.selectedSeats.push(this.seats[i]);
             counter++;
@@ -77,8 +77,8 @@ export class ReservationComponent implements OnInit {
         }
       }
       if (counter === this.numberOfSeats) break;
-      if (nextRow <= 11) {
-        for (let i = nextRow * 7; i < nextRow * 7 + 6 && i < 80; i++) {
+      if (nextRow < 12) {
+        for (let i = nextRow * 7; i < nextRow * 7 + 7 && i < 80; i++) {
           if (this.filledSeats.indexOf(this.seats[i]) < 0) {
             this.selectedSeats.push(this.seats[i]);
             counter++;
