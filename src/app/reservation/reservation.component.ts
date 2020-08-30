@@ -129,6 +129,10 @@ export class ReservationComponent implements OnInit {
   }
 
   bookSeats() {
+    if (!this.selectedSeats.length) {
+      alert('Please select some seats first!');
+      return;
+    }
     let reqBody = {
       passengerId: this.passengerId,
       seatNumbers: this.selectedSeats,

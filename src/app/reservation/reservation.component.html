@@ -10,23 +10,48 @@
   </ng-container>
 
   <h2>SEATS AVAILABILITY</h2>
-  <div class="seats-container">
-    <ng-container *ngFor="let seat of seats">
-      <div
-        class="seat"
-        [ngClass]="{
-          grey: filledSeats.indexOf(seat) > -1,
-          green: selectedSeats.indexOf(seat) > -1
-        }"
-      >
-        <p>
-          <strong>{{ seat }}</strong>
-        </p>
-      </div>
-    </ng-container>
+  <p>(Two columns are shown only to fit seats on page without scrolling)</p>
+  <div class="content">
+    <div class="seats-container">
+      <ng-container *ngFor="let seat of seats; let i = index">
+        <div
+          *ngIf="i < 63"
+          class="seat"
+          [ngClass]="{
+            grey: filledSeats.indexOf(seat) > -1,
+            green: selectedSeats.indexOf(seat) > -1
+          }"
+        >
+          <p>
+            <strong>{{ seat }}</strong>
+          </p>
+        </div>
+      </ng-container>
+    </div>
+    <div class="seats-container">
+      <ng-container *ngFor="let seat of seats; let i = index">
+        <div
+          *ngIf="i > 63 && i < 80"
+          class="seat"
+          [ngClass]="{
+            grey: filledSeats.indexOf(seat) > -1,
+            green: selectedSeats.indexOf(seat) > -1
+          }"
+        >
+          <p>
+            <strong>{{ seat }}</strong>
+          </p>
+        </div>
+      </ng-container>
+    </div>
+    <div class="success">
+      <button class="book" (click)="bookSeats()">
+        <h4><strong>Book Selected Seats</strong></h4>
+      </button>
+      <h1 *ngIf="success">
+        Congrats! Seat no(s): {{ selectedSeats.join(", ") }} booked
+        Successfully!
+      </h1>
+    </div>
   </div>
-  <button (click)="bookSeats()">
-    <h3>CONFIRM</h3>
-  </button>
-  <h1 *ngIf="success">Seat(s) booked Successfully!</h1>
 </div>
