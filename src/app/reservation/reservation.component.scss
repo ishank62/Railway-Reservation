@@ -42,12 +42,19 @@
   color: red;
 }
 
-.book {
+.book,
+.delete {
   background: lightgreen;
   border: 1px solid darkgrey;
   border-radius: 5px;
   color: black;
   cursor: pointer;
+}
+
+.delete {
+  background: red;
+  color: white;
+  margin-top: 100px;
 }
 
 .success {

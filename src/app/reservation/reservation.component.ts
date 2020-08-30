@@ -141,4 +141,13 @@ export class ReservationComponent implements OnInit {
       this.success = true;
     });
   }
+
+  deleteAllSeats() {
+    this.rs.deleteAllReservations().subscribe((res) => {
+      this.rs.getSeats().subscribe((res) => {
+        this.filledSeats = res['response']['filledSeats'];
+        this.selectedSeats = [];
+      });
+    });
+  }
 }

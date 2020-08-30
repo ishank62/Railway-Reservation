@@ -52,6 +52,15 @@
         Congrats! Seat no(s): {{ selectedSeats.join(", ") }} booked
         Successfully!
       </h1>
+      <br /><br /><br /><br /><br />
+      <button class="delete" (click)="deleteAllSeats()">
+        <h4><strong>Cancel All reservations for this train</strong></h4>
+      </button>
+      <p class="red">
+        <strong
+          >(Caution: Clicking this button will erase all reservations!)</strong
+        >
+      </p>
     </div>
   </div>
 </div>
